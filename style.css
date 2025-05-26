@@ -1,0 +1,26 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  padding: 1rem;
+  font-family: "Arial", sans-serif;
+}
+
+
+ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(164px, 1fr));
+  grid-gap: 16px;
+  padding: 16px 32px;
+}
+
+li {
+  border-radius: 4px;
+  padding: 48px 16px 16px;
+  list-style: none;
+  text-align: end;
+}
+#disclaimer{
+  font-size: 0.75rem;
+}

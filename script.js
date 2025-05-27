@@ -16,13 +16,15 @@ const getLuminance = (r, g, b) => {
 
 let UPPER = 0;
 let LOWER = 0;
- let count = 0;
-/* const UPPER = 0.18333333;
-const LOWER = 0.175; */
+let count = 0;
+let granularity = parseInt(
+  document.querySelector("input[name='granularity']:checked").value
+);
 
 const colors = document.querySelector("#colors");
 const contrastValue = document.querySelector("#contrastValue");
 const results = document.querySelector("#results");
+const granularRadio = document.querySelectorAll("input[name='granularity']");
 
 const addColor = (r, g, b) => {
   const li = document.createElement("li");
@@ -36,9 +38,12 @@ rgb(${r}, ${g}, ${b})`;
 
 const calculateColors = () => {
   count = 0;
-  for (let b = 0; b < 256; b += 5) {
-    for (let g = 0; g < 256; g += 5) {
-      for (let r = 0; r < 256; r += 5) {
+  granularity = parseInt(
+    document.querySelector("input[name='granularity']:checked").value
+  );
+  for (let b = 0; b < 256; b += granularity) {
+    for (let g = 0; g < 256; g += granularity) {
+      for (let r = 0; r < 256; r += granularity) {
         const luminance = getLuminance(r, g, b);
         if (LOWER <= luminance && luminance <= UPPER) {
           count++;
@@ -53,21 +58,20 @@ const calculateBounds = () => {
   let C = contrastRange.value;
   contrastValue.innerText = C;
 
-  LOWER = 0.05*(C - 1);
-  UPPER = (1.05/C)-0.05;
+  LOWER = 0.05 * (C - 1);
+  UPPER = 1.05 / C - 0.05;
 
   colors.innerHTML = "";
   calculateColors();
-  if(count === 0){
+  if (count === 0) {
     colors.innerHTML = "<li>No colors found</li>";
-  } else {
-    results.innerHTML = `Found ${count} colors.`;
   }
-
-  console.log(contrastRange.value);
-  console.log(UPPER);
-  console.log(LOWER);
+  results.innerHTML = `Found ${count} colors.`;
 };
+
+for (const g of granularRadio) {
+  g.addEventListener("change", calculateBounds);
+}
 
 const contrastRange = document.querySelector("#contrastChoice");
 

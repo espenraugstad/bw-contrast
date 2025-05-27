@@ -24,3 +24,20 @@ li {
 #disclaimer{
   font-size: 0.75rem;
 }
+
+.note{
+  border: 1px solid red;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: fit-content;
+}
+
+.gran{
+  margin: 1rem 0;
+  display: flex;
+  width: fit-content;
+}
+
+.gran>div{
+  margin-right: 1rem;
+}

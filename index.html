@@ -1,22 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Colors on Black and White</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <h1>Contrast on Black and White</h1>
-    <p id="disclaimer">This page is based on <a href="https://codepen.io/finnhvman/pen/bZQLgR" target="_blank" rel="noopener">code written by Benze Szabo</a> and explained in detail in <a href="https://dev.to/finnhvman/which-colors-look-good-on-black-and-white-2pe6" target="_blank" rel="noopener">the article Which Colors Look Good on Black and White?</a></p>
-    <p>Choose a contrast level to see colors that have this contrast or above on <emph>both</emph> black and white.</p>
-    <p>NOTE! WCAG recommends a minimum contrast of 4.5 for regular text on background.</p>
-    <input id="contrastChoice" type="range" min="1" max="21" step="0.01" value="4.5" />
+    <p id="disclaimer">
+      This page is based on
+      <a
+        href="https://codepen.io/finnhvman/pen/bZQLgR"
+        target="_blank"
+        rel="noopener"
+        >code written by Benze Szabo</a
+      >
+      and explained in detail in
+      <a
+        href="https://dev.to/finnhvman/which-colors-look-good-on-black-and-white-2pe6"
+        target="_blank"
+        rel="noopener"
+        >the article Which Colors Look Good on Black and White?</a
+      >
+    </p>
+    <hr>
+    <p>
+      Choose a contrast level to see colors that have this contrast or above on
+      <em>both</em> black and white.
+    </p>
+    <p>
+      Granularity determines how much the r, g, and b values should increase for
+      each color. A low granularity calculates many colors, and
+      <em>MAY CRASH THE SITE</em> for low contrast values. Choose wisely!
+    </p>
+    <hr>
+    <div class="note">
+      <p>
+        NOTE! WCAG recommends a minimum contrast of 4.5 for regular text on
+        background.
+      </p>
+    </div>
+    <input
+      id="contrastChoice"
+      type="range"
+      min="1"
+      max="21"
+      step="0.01"
+      value="4.5"
+    />
     <label for="contrastChoice">Contrast</label>
     <span id="contrastValue"></span>
+
+    
+    <fieldset class="gran">
+        <legend>Granularity:</legend>
+      <div>
+        <input type="radio" name="granularity" id="g1" value="1" />
+        <label for="g1">1</label>
+      </div>
+      <div>
+        <input type="radio" name="granularity" id="g3" value="3" />
+        <label for="g3">3</label>
+      </div>
+      <div>
+        <input type="radio" name="granularity" id="g5" value="5" checked />
+        <label for="g5">5</label>
+      </div>
+      <div>
+        <input type="radio" name="granularity" id="g15" value="15" />
+        <label for="g15">15</label>
+      </div>
+      <div>
+        <input type="radio" name="granularity" id="g17" value="17" />
+        <label for="g17">17</label>
+      </div>
+      <div>
+        <input type="radio" name="granularity" id="g85" value="85" />
+        <label for="g85">85</label>
+      </div>
+    </fieldset>
     <div id="results"></div>
     <ul id="colors"></ul>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>

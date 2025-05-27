@@ -35,6 +35,7 @@ rgb(${r}, ${g}, ${b})`;
 };
 
 const calculateColors = () => {
+  count = 0;
   for (let b = 0; b < 256; b += 5) {
     for (let g = 0; g < 256; g += 5) {
       for (let r = 0; r < 256; r += 5) {
